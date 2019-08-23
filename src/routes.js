@@ -12,6 +12,10 @@ import New from './pages/New';
 export default createAppContainer(
     createStackNavigator({
         Feed,
-        New
+        New,
+    }, {
+        defaultNavigationOptions: {
+            headerTitle: 'Ins'
+        },
     })
 );

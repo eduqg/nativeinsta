@@ -1,0 +1,12 @@
+-> yarn react-native init nativeinsta (pode ser com npx)
+Para criar o app. react-native = react-native-cli
+
+Com o emulador aberto
+-> yarn react-native run-android
+Para criar app no emulador
+
+-> yarn start
+Para rodar o metro bundler. Ativar Live reload no app. Apertar r duas vezes carrega app também.
+
+-> yarn react-native start --reset-cache
+Para limpar o cache, pode ser necessário após alguns erros.
