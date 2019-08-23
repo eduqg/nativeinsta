@@ -9,6 +9,9 @@ YellowBox.ignoreWarnings([
 
 import Routes from './routes';
 
+// Quando utilizar estado, componentDidMount e etc -> Usar classe
+// Para os outros casos -> Usar função
+
 export default function App() {
   return (
     <Routes />
