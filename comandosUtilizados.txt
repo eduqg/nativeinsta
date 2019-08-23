@@ -13,3 +13,6 @@ Para limpar o cache, pode ser necessário após alguns erros.
 
 -> yarn add axios
 Para fazer requisições http
+
+-> yarn add react-native-image-picker
+para adicionar imagens, acesso a camera. Devo ir nas documentações no github para acesso.
