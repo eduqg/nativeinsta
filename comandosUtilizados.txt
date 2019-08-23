@@ -10,3 +10,6 @@ Para rodar o metro bundler. Ativar Live reload no app. Apertar r duas vezes carr
 
 -> yarn react-native start --reset-cache
 Para limpar o cache, pode ser necessário após alguns erros.
+
+-> yarn add axios
+Para fazer requisições http
