@@ -4,9 +4,17 @@ import { SafeAreaView, Text, Image, View, StyleSheet, TouchableOpacity } from 'r
 import AsyncStorage from '@react-native-community/async-storage';
 
 import api from '../services/api';
+import camera from '../assets/camera.png';
 
 
 export default class Feed extends Component {
+    static navigationOptions =({navigation}) => ({
+        headerRight: (
+            <TouchableOpacity style={{marginRight: 20}} onPress={() => navigation.navigate('New') }>
+                <Image source={camera} />
+            </TouchableOpacity>
+        ),
+    });
     render() {
         return (
             <View style={styles.container}>
@@ -16,8 +24,8 @@ export default class Feed extends Component {
     }
 }
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
     container: {
-    
+
     }
 });
