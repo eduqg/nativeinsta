@@ -26,18 +26,39 @@ export default class Feed extends Component {
 
     // Quando o componente for montado
     async componentDidMount() {
-        // this.registerToSocket();
+        this.registerToSocket();
         const response = await api.get('posts');
         console.table(response.data);
         this.setState({ feed: response.data });
     }
+
+    registerToSocket = () => {
+        const socket = io('http://localhost:3333');
+
+        socket.on('post', newPost => {
+            this.setState({ feed: [newPost, ...this.state.feed] });
+        })
+
+        socket.on('like', likedPost => {
+            this.setState({
+                feed: this.state.feed.map(post =>
+                    post.id === likedPost.id ? likedPost : post
+                )
+            });
+        })
+    }
+
+    handleLike = id => {
+        api.post(`/posts/${id}/like`);
+    }
+
     // FlatList é o map do ReactJS, lista
     render() {
         return (
             <View style={styles.container}>
                 <FlatList
                     data={this.state.feed}
-                    keyExtractor={post => post.id}
+                    keyExtractor={(post) => post.id.toString()}
                     renderItem={({ item }) => (
                         <View style={styles.feedItem}>
                             <View style={styles.feedItemHeader}>
@@ -53,7 +74,7 @@ export default class Feed extends Component {
 
                             <View style={styles.feedItemFooter}>
                                 <View style={styles.actions}>
-                                    <TouchableOpacity style={styles.action} onPress={() => { }}>
+                                    <TouchableOpacity style={styles.action} onPress={() => this.handleLike(item.id)}>
                                         <Image source={like} />
                                     </TouchableOpacity>
                                     <TouchableOpacity style={styles.action} onPress={() => { }}>
